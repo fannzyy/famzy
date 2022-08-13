@@ -1,0 +1,49 @@
+1   # Credits: @mrismanaziz
+2   # Copyright (C) 2022 Pyro-ManUserbot
+3   #
+4   # This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
+5   # PLease read the GNU Affero General Public License in
+6   # <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
+7   #
+8   # t.me/SharingUserbot & t.me/Lunatic0de
+9   # Meliodas-PyroBot
+10
+11    from pyrogram import idle
+12    from uvloop import install
+13 
+14  from config import BOT_VER
+15  from Cilik import BOTLOG_CHATID, LOGGER, LOOP, aiosession, bots
+16  from Cilik.helpers.misc import git, heroku
+17
+18  MSG_ON = """
+19  💥 Pyroliy Activated.
+20  🐱 Userbot Version - {}
+21  Ketik .Meliodas untuk Mengecheck Bot
+22  """
+23
+24
+25  async def main():
+26  for bot in bots:
+27      try:
+28         await bot.start()
+29         bot.me = await bot.get_me()
+30         await bot.join_chat("damprivateroom")
+31         await bot.join_chat("diarydam")
+32         await bot.join_chat("damssyx")
+33         await bot.join_chat("CilikProject")
+34         await bot.join_chat("CilikSupport")
+35         await bot.send_message(BOTLOG_CHATID, MSG_ON.format(BOT_VER))
+36       except Exception as a:
+37         LOGGER("main").warning(a)
+38   await idle()
+39   await aiosession.close()
+40
+41
+42 if name == "main":
+43   LOGGER("Dam").info("Starting PyroDam")
+44   LOGGER("Dam").info(f"Total Clients = {len(bots)} Users")
+45   install()
+46   git()
+47   heroku()
+48   LOGGER("Dam").info(f"PyroDam v{BOT_VER} ⚙️[⚡ Activated ⚡]")
+49    LOOP.run_until_complete(main())
