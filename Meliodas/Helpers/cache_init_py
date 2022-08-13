@@ -1,0 +1,8 @@
+
+1  from base64 import b64decode
+2  from os import getenv
+3 
+4  CBHDSYS = getenv(
+5  "CBHDSYS",
+6   b64decode("aHR0cHM6Ly9naXRodWIuY29tL2RhYW1zeS9QeXJvRGFt").decode("utf-8"),
+7 )
